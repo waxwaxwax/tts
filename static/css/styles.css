@@ -1,0 +1,184 @@
+/* html, body を画面全体に広げる */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* 背景やフォント設定 */
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* 45度の角度でグラデーション。必要に応じて角度や色を変更してください。 */
+    background: linear-gradient(45deg, #0ABAB5, #A4F1F4);
+    /* 固定背景にするとスクロール時も綺麗に表示されます（任意） */
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* コンテナは画面全体を覆い、中央に配置 */
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; /* 画面いっぱいを確保しつつ、コンテンツが増えたら伸びる */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  
+  /* 中央のフォームラッパー（背景、角丸、影など） */
+  .form-wrapper {
+    background-color: white;
+    width: 100%;
+    max-width: 800px;  /* 必要に応じて調整 */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  /* 見出し */
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+    letter-spacing: 1.5px;
+  }
+  
+  /* フォーム要素 */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #555;
+  }
+  
+  textarea, input, select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 10px rgba(0, 114, 255, 0.2);
+    border-color: #0072ff;
+  }
+  
+  textarea {
+    height: 150px;
+  }
+  
+  /* ボタン：サイズを半分に調整 */
+  button {
+    width: 50%;               /* 元は 100% → 50% */
+    padding: 7.5px;           /* 元は 15px → 7.5px */
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 25px;       /* 元は 50px → 25px */
+    cursor: pointer;
+    font-size: 0.75em;        /* 元は 1.5em → 0.75em */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 7.5px rgba(102, 126, 234, 0.4); /* 元は 0 8px 15px → 半分に */
+    margin-top: 5px;          /* 元は 10px → 5px */
+  }
+  
+  button:hover {
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(102, 126, 234, 0.5);  /* 調整例 */
+  }
+  
+  button:active {
+    background: linear-gradient(135deg, #434190, #553c9a);
+    transform: translateY(1px);
+    box-shadow: 0 3px 7.5px rgba(102, 126, 234, 0.3);  /* 調整例 */
+  }
+  
+  /* 文字数カウント */
+  #charCount {
+    text-align: right;
+    font-size: 1em;
+    color: #666;
+  }
+  
+  /* 結果表示エリア */
+  #result {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  /* プログレスバー */
+/* プログレスバーのコンテナ */
+/* プログレスバーのコンテナ（親要素の横幅いっぱいに表示） */
+.progress-container {
+    width: 100%;              /* 横幅は親要素に合わせる */
+    max-width: 100%;          /* 必要に応じて親の幅いっぱいに */
+    background-color: #e0e0e0;
+    border-radius: 7.5px;     /* 高さ15px の半分 */
+    margin-top: 20px;
+    height: 15px;             /* もともと30px → 15px に変更 */
+    display: none;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* プログレスバー自体 */
+  .progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #38ef7d, #11998e);
+    border-radius: 7.5px;       /* コンテナと同じ半径 */
+    text-align: center;
+    color: white;
+    line-height: 15px;          /* 高さ15px に合わせる */
+    font-size: 0.8em;           /* 少し小さめに調整 */
+    transition: width 0.4s ease;
+    /* 高パフォーマンスなアニメーションのための指定 */
+    will-change: width;
+    transform: translateZ(0);
+  }  
+  
+  
+  /* レスポンシブ対応 */
+  @media (max-width: 600px) {
+    .form-wrapper {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 2em;
+    }
+  
+    label, textarea, input, select, button, #charCount, #result {
+      font-size: 1em;
+    }
+  
+    textarea {
+      height: 120px;
+    }
+  
+    button {
+      padding: 12px;  /* この場合、モバイルではサイズ感を若干調整 */
+      font-size: 1em;
+    }
+  }
+  

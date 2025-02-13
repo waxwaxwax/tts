@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text to Speech Converter</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-wrapper">
+      <h1>🤖 テキスト読み上げ 🤖</h1>
+      <p>Azure OpenAI の TTS モデルを使用して、テキストを読み上げます。</p>
+      <form id="ttsForm">
+        <label for="text">👇 読み上げたいテキストを入力 👇</label>
+        <textarea id="text" name="text" rows="12" required></textarea>
+        
+        <p id="charCount">Characters: 0</p>
+
+        <label for="voice">声の選択:</label>
+        <select id="voice" name="voice" required>
+          <option value="alloy">Alloy</option>
+          <option value="echo">Echo</option>
+          <option value="fable">Fable</option>
+          <option value="onyx">Onyx</option>
+          <option value="nova">Nova</option>
+          <option value="shimmer">Shimmer</option>
+        </select>
+
+        <!-- 変換時はダウンロード用ファイル名入力欄は表示せず、変換後の結果エリアで入力 -->
+        <button type="submit">変換</button>
+      </form>
+
+      <!-- プログレスバー -->
+      <div id="progressContainer" class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <!-- 結果表示エリア -->
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
